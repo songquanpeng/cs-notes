@@ -19,3 +19,10 @@
 5. 内置 map，动态数组类型。
 
 ## Go 安装配置
+1. 下载安装包： 
++ https://golang.org/doc/install 
++ https://golang.google.cn/dl/ 
+2. 解压缩：`tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz`
+3. 添加到 PATH 环境变量：`export PATH=$PATH:/usr/local/go/bin/`，可以添加到以下文件的结尾：`~/.profile`
+4. 设置代理：`go env -w GOPROXY=https://goproxy.cn,direct`
+5. 对于低版本的 Go，启用 Go Module：`go env -w GO111MODULE=on`
