@@ -1,4 +1,4 @@
-# 概述
+# Go 语言概述
 ## 推荐教程
 + [ ] Go 语言编程
 + [ ] [Go 入门指南](https://github.com/unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)

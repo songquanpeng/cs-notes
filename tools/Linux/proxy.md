@@ -17,3 +17,10 @@ export https_proxy=http://127.0.0.1:7890
 ```
 
 Gnome 下代理的设置：`Settings -> Network -> Network Proxy -> Manual`
+
+## APT 设置代理
+```sh
+sudo touch /etc/apt/apt.conf.d/proxy.conf
+echo "Acquire::http::Proxy "http://localhost:7890/";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf
+echo "Acquire::https::Proxy "http://localhost:7890/";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf
+```
