@@ -22,7 +22,11 @@
 ```sh
 git config --global user.name "Your Name" 
 git config --global user.email "email@example.com" 
+# 使用 VS Code
 git config --global core.editor "code -w"
+# 使用 Sublime Text
+git config --global core.editor "subl -n -w"
+git config credential.helper store
 git config --global http.proxy http://127.0.0.1:7890
 git config --global color.ui true 
 git config core.autocrlf true 
