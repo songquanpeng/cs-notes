@@ -17,6 +17,7 @@ module.exports = {
     sidebarDepth: 2,
     smoothScroll: true,
     repo: 'songquanpeng/cs-notes',
+    docsBranch: 'main',
     editLinks: true,
     editLinkText: '编辑本页面',
     docsDir: 'docs',
