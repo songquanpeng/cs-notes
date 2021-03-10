@@ -8,7 +8,13 @@ module.exports = {
         'ga': 'UA-141101198-9' // UA-00000000-0
       }
     ],
-    'autobar'
+    'autobar',
+    [
+      'sitemap',
+      {
+        hostname: 'https://notes.justsong.cn'
+      }
+    ]
   ],
   title: "JustSong's CS Notes",
   description: '我的编程笔记',

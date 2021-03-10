@@ -13,6 +13,7 @@
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.8.2",
     "vuepress": "^1.8.2",
-    "vuepress-plugin-autobar": "boboidream/vuepress-bar"
+    "vuepress-plugin-autobar": "boboidream/vuepress-bar",
+    "vuepress-plugin-sitemap": "^2.3.1"
   }
 }
