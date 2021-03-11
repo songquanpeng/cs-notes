@@ -50,5 +50,15 @@ module.exports = {
         link: '/others/'
       }
     ],
-  }
+  },
+  head: [
+    [
+      "script",
+      {
+        "data-ad-client": "ca-pub-4932639067711253",
+        async: true,
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+      },
+    ],
+  ],
 }
