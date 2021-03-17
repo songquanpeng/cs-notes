@@ -1,4 +1,4 @@
-# PyTorch Tensor 相关操作总结
+# PyTorch Tensor
 ## 概述
 `torch.Tensor` 与 NumPy 的多维数组非常类似，区别在于：
 1. GPU 计算。
