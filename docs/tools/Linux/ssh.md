@@ -35,6 +35,10 @@ sudo apt-get install openssh-server
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCj8b9SWuI/oKquMiy+vOSOOcokMF6XkUkc7TlX33bIy3xK5l8rgJ2CAJ+xORAA2JJzwXdu8AMDsFfk8DHMj7kcs/K505iMpiIGhUWHXkl+UiIhD+B/v9KIv4jQQF9wmJR/jaw8MdHyUXZA2maV6sY41swoRPyAtYb6HW/32pWsqsDq2DeQQyARqiPpV0pcFV3BXK0nOBl8+W9HjP8rYBFbXIfpXTvhSrzOz+NXoV8E8/w7/jD5YDPbMQ16FPQzk3CVT4pUL4x1nOqxFgvLbiwfPsAWF6a2Lr6A8ZcU5AUI2GC5+X6r47KlGUl0mtTOkarBkJ91+a//JFHmstrLrKyV JustSong@MyPC
 ```
 
+可以使用 `ssh-copy-id username@remote_host` 很方便地为远超主机配置密钥访问。
+如果需要指定公钥，使用 `-i` 即可。
+如果需要指定端口，使用 `-p` 即可。
+
 ## 配置
 ```sh
 sudo vi /etc/ssh/sshd_config 

@@ -20,3 +20,5 @@ custom_channels:
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 ```
+
+禁止自动激活 base 环境：`conda config --set auto_activate_base False`
