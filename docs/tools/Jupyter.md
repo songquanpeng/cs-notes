@@ -1,4 +1,12 @@
 # Jupyter 使用笔记
+## 配置
+### 添加 conda 环境到 Jupyter
+```sh
+conda install -c anaconda ipykernel
+python -m ipykernel install --user --name=envName
+```
+然后为 Notebook 选择 kernel 就好.
+
 ## 启动
 ```sh
 jupyter lab ./working/dir
