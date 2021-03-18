@@ -38,6 +38,10 @@ module.exports = {
         link: '/languages/'
       },
       {
+        text: '框架',
+        link: '/frameworks/'
+      },
+      {
         text: '工具',
         link: '/tools/'
       },
