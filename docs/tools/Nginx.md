@@ -44,6 +44,16 @@ server {
         try_files $uri /index.html
     }
 }
+
+server {
+  listen 80;
+  server_name  your.domain.com;
+
+  location / {
+    alias /path/to/dir/of/docs/;
+    index index.html;
+  }
+}
 ```
 
 ## 参考
