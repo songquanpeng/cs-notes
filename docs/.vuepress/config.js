@@ -16,8 +16,8 @@ module.exports = {
       }
     ]
   ],
-  title: "JustSong's CS Notes",
-  description: '我的编程笔记',
+  title: "编程笔记",
+  description: 'JustSong 的编程笔记',
   keywords: "编程笔记，JustSong",
   themeConfig: {
     sidebarDepth: 2,
@@ -52,7 +52,11 @@ module.exports = {
       {
         text: '其他',
         link: '/others/'
-      }
+      },
+      { 
+        text: '博客', 
+        link: 'https://iamazing.cn' 
+      },
     ],
   },
   head: [
