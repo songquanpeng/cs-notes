@@ -35,23 +35,23 @@ module.exports = {
       },
       {
         text: '语言',
-        link: '/languages/'
+        link: '/编程语言/'
       },
       {
         text: '框架',
-        link: '/frameworks/'
+        link: '/框架使用/'
       },
       {
         text: '工具',
-        link: '/tools/'
+        link: '/工具使用/'
       },
       {
         text: '算法',
-        link: '/algorithms/'
+        link: '/算法总结/'
       },
       {
-        text: '其他',
-        link: '/others/'
+        text: 'Linux',
+        link: '/Linux 系统/'
       },
       { 
         text: '博客', 
