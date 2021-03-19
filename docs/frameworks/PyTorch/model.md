@@ -63,6 +63,12 @@ self.decode.insert(0, AdainResBlk(dim_out, dim_in))
 `nn.ModuleList()` 相当于一个 Python 列表，但是其中的网络层参数可以被优化器发现和训练。
 
 
+### 常用网络层
+```python
+nn.Linear(num_inputs, num_outputs)
+nn.ReLU()
+```
+
 ### 查看模型结构
 ```python
 print(net)

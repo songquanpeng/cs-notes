@@ -91,11 +91,7 @@
 |`x.mean()`|返回一个张量，其为 x 的均值，注意 x 必须是浮点类型|
 |`x.gather(dim, index)`||
 |`x.argmax(dim)`|返回指定维度上最大值的索引|
-
-
-
-
-
+|`x.numpy()`|返回张量 x 的 numpy 数据形式，注意内存是共享的|
 
 ## 梯度的计算
 1. Tensor 的属性 `requires_grad` 若为 `True`，则 PyTorch 将追踪其上的操作。
