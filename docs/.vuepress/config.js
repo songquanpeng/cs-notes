@@ -14,8 +14,7 @@ module.exports = {
       {
         hostname: 'https://notes.justsong.cn'
       }
-    ],
-    ['vuepress-plugin-code-copy', true]
+    ]
   ],
   title: "编程笔记",
   description: 'JustSong 的编程笔记',
