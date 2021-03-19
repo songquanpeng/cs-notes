@@ -79,7 +79,8 @@ module.weight.data.fill_(0)
 #### 使用 `torch.nn.init` 中的方法
 ```python
 nn.init.xavier_uniform(conv1.weight)
-nn.init.constant_(module.bias, 0)
+nn.init.constant_(module.bias, val=0)
+nn.init.norm_(module.weight, mean=0, std=0.01)
 ```
 
 ### 对于 `nn.Module`（包括 `nn.Sequential`）

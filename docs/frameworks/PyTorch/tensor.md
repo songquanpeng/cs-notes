@@ -73,18 +73,24 @@
 
 注意：x 和 y 同样是共享内存的，如果不想共享内存，则 `y = x.clone().view(sizes*)`。
 
-### 线性代数
-随用随查就好。
+可以有一个值为 -1，这样 PyTorch 会自动推断该值。
+
+例子：
+1. 将图片输入全连接层：`linear(x.view(x.shape[0], -1))`，shape 的第一个值是 batch size。
+
 
 ### 其他操作
-#### `x.clone()` 或者 `torch.clone(x)`
-拷贝 x 的一个副本，注意该操作会被记录在计算图中，梯度回传到副本时也会传到源 Tensor。
-
-#### `x.detach()`
-返回一个新的 Tensor，其从当前计算图中剥离，但是注意内存是共享的，如果对其进行修改将出发错误。
-
-#### `x.detach_()`
-将当前 Tensor 从计算图中剥离，使其成为叶子节点，注意不能对 view 使用该函数。
+|操作|描述|
+|:--|:--|
+|`x.clone()` 或 `torch.clone(x)`|拷贝 x 的一个副本，注意该操作会被记录在计算图中，梯度回传到副本时也会传到源 Tensor|
+|`x.detach()`|返回一个新的 Tensor，其从当前计算图中剥离，但是注意内存是共享的，如果对其进行修改将出发错误|
+|`x.detach_()`|将当前 Tensor 从计算图中剥离，使其成为叶子节点，注意不能对 view 使用该函数|
+|`x.requires_grad_(requires_grad=True)`|设置 x 为需要梯度信息|
+|`x.item()`|x 必须为 0 维度，返回其值，类型为 Python 内置类型|
+|`x.float()`|返回一个新的指定类型的张量|
+|`x.mean()`|返回一个张量，其为 x 的均值，注意 x 必须是浮点类型|
+|`x.gather(dim, index)`||
+|`x.argmax(dim)`|返回指定维度上最大值的索引|
 
 
 
@@ -101,7 +107,7 @@
 5. 之后调用 `x.backward()` 进行反向传播，梯度将记录在 Tensor 的 `grad` 属性中。
 
 一般流程：
-1. `optimizer.zero_grad()`：清空梯度。
+1. `optimizer.zero_grad()`：清空梯度，或者遍历所有参数，通过 `param.grad.data.zero_()` 手动清空。
 2. `loss.backward()`：反向传播，计算新的梯度。
 3. `optimizer.step()`：根据梯度对 Tensor（参数）进行更新。
 
