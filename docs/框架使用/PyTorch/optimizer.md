@@ -19,6 +19,14 @@ for epoch in range(num_epochs):
     print('epoch %d, loss: %f' % (epoch, l.item()))
 ```
 
+总结一下就是：
+1. 梯度归零。
+2. 根据模型输出和真实标签来计算损失。
+3. 反向传播，更新梯度。
+4. 根据梯度，更新参数。
+
+其中 1 和 2 的次序无所谓。
+
 ## 自己实现 SGD 优化器
 ```python
 def sgd(params, lr, bs):
@@ -30,7 +38,7 @@ sgd(model.parameters(), lr, bs)
 
 ## 使用 PyTorch 提供的优化器
 ```python
-optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=λ)
 optimizer = torch.optim.Adam([var1, var2], lr=0.0001)
 
 g_optimizer = torch.optim.Adam(self.G.parameters(), self.g_lr, (self.beta1, self.beta2))
