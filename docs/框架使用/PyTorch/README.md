@@ -15,3 +15,6 @@ conda create --name torch
 conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
 pip install tensorflow
 ```
+
+## 推荐阅读
++ [深度学习框架 PyTorch 常用代码段](https://zhuanlan.zhihu.com/p/104019160)

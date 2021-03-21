@@ -6,5 +6,5 @@
 2. Hugo
 
 ### 文档类
-1. https://github.com/docsifyjs/docsify/
+1. https://docsify.js.org/#/zh-cn/
 2. VuePress

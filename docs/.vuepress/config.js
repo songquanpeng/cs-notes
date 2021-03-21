@@ -16,8 +16,8 @@ module.exports = {
       }
     ]
   ],
-  title: "JustSong's CS Notes",
-  description: '我的编程笔记',
+  title: "编程笔记",
+  description: 'JustSong 的编程笔记',
   keywords: "编程笔记，JustSong",
   themeConfig: {
     sidebarDepth: 2,
@@ -35,20 +35,28 @@ module.exports = {
       },
       {
         text: '语言',
-        link: '/languages/'
+        link: '/编程语言/'
+      },
+      {
+        text: '框架',
+        link: '/框架使用/'
       },
       {
         text: '工具',
-        link: '/tools/'
+        link: '/工具使用/'
       },
       {
         text: '算法',
-        link: '/algorithms/'
+        link: '/算法总结/'
       },
       {
-        text: '其他',
-        link: '/others/'
-      }
+        text: 'Linux',
+        link: '/Linux 系统/'
+      },
+      { 
+        text: '博客', 
+        link: 'https://iamazing.cn' 
+      },
     ],
   },
   head: [
@@ -61,4 +69,12 @@ module.exports = {
       },
     ],
   ],
+  markdown: {
+    extendMarkdown: md => {
+      md.set({
+        html: true,
+        linkify: true
+      })
+    }
+  }
 }
