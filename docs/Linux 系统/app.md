@@ -14,6 +14,8 @@ For VS Code, install with the App Store (auto update).
 sudo apt-get install tldr
 # Clion 需要使用该程序来诊断内存使用问题
 sudo apt install valgrind
+# 命令速查
+sudo apt install tldr
 ```
 
 ## 编程语言

@@ -12,6 +12,11 @@ python -m ipykernel install --user --name=envName
 jupyter lab ./working/dir
 ```
 
+## 魔法
+```
+%matplotlib inline
+```
+
 ## 快捷键
 1. `Shift + Enter`：执行当前单元，并选择下一个单元。
 2. `Ctrl + Enter` ：执行当前单元。

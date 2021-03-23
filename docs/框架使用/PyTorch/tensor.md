@@ -167,6 +167,22 @@ tensor([[[ 2.5576, -0.4682,  1.7881,  2.2285],
 例子：
 1. 将图片输入全连接层：`linear(x.view(x.shape[0], -1))`，shape 的第一个值是 batch size。
 
+### 禁用梯度计算
+可以节省大量内存空间，因为省去了没有用的中间变量的保存。
+
+可以使用 with 方式：
+```python
+with torch.no_grad():
+   y = x * 2
+```
+也可以使用装饰器的方式：
+
+```python
+@torch.no_grad()
+def foo():
+   pass
+```
+
 
 ### 其他操作
 |操作|描述|
