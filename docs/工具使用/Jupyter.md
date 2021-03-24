@@ -12,6 +12,9 @@ python -m ipykernel install --user --name=envName
 jupyter lab ./working/dir
 ```
 
+## 基本使用
+运行 shell 命令：`!command`
+
 ## 魔法
 ```
 %matplotlib inline
