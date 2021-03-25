@@ -182,12 +182,16 @@ net.apply(init_weights)
 
 ## 模型的评估
 1. 加载模型：`model.load_state_dict(torch.load("the path of model's pth file"))`
-2. 切换到评估模式：`model.eval()` （为什么要手动指明模型？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout）。
+2. 切换到评估模式：`model.eval()` （为什么要手动指明模式？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout）。
 3. 关闭模型参数的 `requires_grad`：
 ```python
 def toggle_grad(model, on_or_off):
     for param in model.parameters():
     param.requires_grad = on_or_off
+
+# 或者使用 torch.no_grad() 装饰器或者 with 代码块。
+with torch.no_grad():
+    out_data = model(data)
 ```
 4. 准备相应的特征和标签，注意要指明放到 GPU 的内存里，例如 `x = torch.randn(10, 128).cuda()`。
 5. 使用模型进行预测，例如：`predict = model(x)`。
