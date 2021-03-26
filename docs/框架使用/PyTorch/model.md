@@ -86,7 +86,7 @@ net['output'] = nn.Linear(256, 10)
 ```
 
 ### 构建自定义网络层
-虽说模型和模型层没有本质确保，都是 `Module`，但是对于模型层，构建的时候我们要注意参数的声明和使用。
+虽说模型和模型层没有本质区别，都是 `Module`，但是对于模型层，构建的时候我们要注意参数的声明和使用。
 
 为什么构建模型时不用管呢？因为模型里用的都是现有的模型层，其参数已经声明好了（可能也已经初始化好了）。
 
@@ -181,6 +181,19 @@ net.apply(init_weights)
 
 要注意，要么在 `with torch.no_grad()` 里进行参数的初始化操作，要么加上 `@torch.no_grad()` 注解。
 
+对于内置的参数初始化函数，其已经做了类似的处理，例如对于 `nn.init.xavier_uniform`：
+```python
+def xavier_uniform_(tensor: Tensor, gain: float = 1.) -> Tensor:
+    fan_in, fan_out = _calculate_fan_in_and_fan_out(tensor)
+    std = gain * math.sqrt(2.0 / float(fan_in + fan_out))
+    a = math.sqrt(3.0) * std  # Calculate uniform bounds from standard deviation
+    return _no_grad_uniform_(tensor, -a, a)
+
+def _no_grad_uniform_(tensor, a, b):
+    with torch.no_grad():
+        return tensor.uniform_(a, b)
+```
+
 当然，如果是直接操作 `.data` 属性，那 `no_grad` 不是必须的（因为这样的话本来就不会被自动求导机制记录）。
 
 ### 模型参数的共享
@@ -190,7 +203,10 @@ net.apply(init_weights)
 
 ## 模型的评估
 1. 加载模型：`model.load_state_dict(torch.load("the path of model's pth file"))`
-2. 切换到评估模式：`model.eval()` ；为什么要手动指明模式？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout。具体是如何实现的？调用 `eval()` 后会将模型的 training 属性置为 false，Batch Normalization layer 或者 Dropout layer 通过读取 training 属性来判断当前模式从而采用不同的行为。**要注意，eval 不会影响梯度的计算，只不过不回传更新参数而已，必须另外额外关闭梯度计算**
+2. 切换到评估模式：`model.eval()` ；
+   1. 为什么要手动指明模式？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout。
+   2. 具体是如何实现的？调用 `eval()` 后会将模型的 training 属性置为 false，Batch Normalization layer 或者 Dropout layer 通过读取 training 属性来判断当前模式从而采用不同的行为。
+   3. **要注意，eval 不会影响梯度的计算，只不过不回传更新参数而已，必须另外额外关闭梯度计算**
 3. 关闭模型参数的 `requires_grad`：
 ```python
 def toggle_grad(model, on_or_off):
@@ -201,7 +217,8 @@ def toggle_grad(model, on_or_off):
 with torch.no_grad():
     out_data = model(data)
 ```
-之后网络前向传播后不会进行求导和进行反向传播。
+之后网络前向传播后不会再进行求导和进行反向传播。
+
 4. 准备相应的特征和标签，注意要指明放到 GPU 的内存里，例如 `x = torch.randn(10, 128).cuda()`。
 5. 使用模型进行预测，例如：`predict = model(x)`。
 6. 最后如果还要继续训练，记得：
@@ -231,7 +248,10 @@ with torch.no_grad():
 torch.save(model, PATH)
 model = torch.load(PATH)
 ```
-这种看起来更加方便，我们取回的时候甚至都不用实现准备模型实例，但是，貌似有些问题？待补充。
+这种看起来更加方便，我们取回的时候甚至都不用实现准备模型实例，但是，序列化后的模型与具体的类和目录结构绑定在一起了，
+如果后续文件位置或者类发生改变，模型将不可用，因此不推荐这种方式。
+
+要注意，加载后的模型默认是训练模式，如果要进行评估，必须手动切换。
 
 ### 保存模型
 1. 只保存模型参数：torch.save(net.state_dict(), "./data/net_parameter.pth")
