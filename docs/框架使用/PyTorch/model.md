@@ -120,6 +120,14 @@ print(net)
 print(net[0])
 ```
 
+查看每一层的输出是否正常：
+```python
+X = torch.rand((N, C, H, W))
+for name, layer in net.named_children():
+    X = layer(X)
+    print(name, ' output shape:\t', X.shape)
+```
+
 ## 模型的参数
 `Module` 类实现了两个相关的函数：
 1. `parameters()`：返回参数迭代器。
@@ -182,7 +190,7 @@ net.apply(init_weights)
 
 ## 模型的评估
 1. 加载模型：`model.load_state_dict(torch.load("the path of model's pth file"))`
-2. 切换到评估模式：`model.eval()` （为什么要手动指明模式？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout）。
+2. 切换到评估模式：`model.eval()` ；为什么要手动指明模式？因为有些东西在训练模式和评估模式下表现不同，例如 Batch Normalization，Dropout。具体是如何实现的？调用 `eval()` 后会将模型的 training 属性置为 false，Batch Normalization layer 或者 Dropout layer 通过读取 training 属性来判断当前模式从而采用不同的行为。**要注意，eval 不会影响梯度的计算，只不过不回传更新参数而已，必须另外额外关闭梯度计算**
 3. 关闭模型参数的 `requires_grad`：
 ```python
 def toggle_grad(model, on_or_off):
@@ -193,9 +201,12 @@ def toggle_grad(model, on_or_off):
 with torch.no_grad():
     out_data = model(data)
 ```
+之后网络前向传播后不会进行求导和进行反向传播。
 4. 准备相应的特征和标签，注意要指明放到 GPU 的内存里，例如 `x = torch.randn(10, 128).cuda()`。
 5. 使用模型进行预测，例如：`predict = model(x)`。
-6. 最后如果还要继续训练，记得开启模型参数的 `requires_grad`。
+6. 最后如果还要继续训练，记得：
+   1. 开启模型参数的 `requires_grad`（如果使用 `torch.no_grad()`，结束该 with 块之后 `requires_grad` 会自动恢复成 `Ture`），
+   2. 并调用 `model.train()`。
 
 ## 模型的保存与加载
 参数后缀任意，一般为 `pt` 或 `pth`。
@@ -231,6 +242,8 @@ model = torch.load(PATH)
 1. 加载模型参数：net_clone.load_state_dict(torch.load("./data/net_parameter.pth"))
 2. 加载完整的模型（区别在于这里的返回值直接是模型，我们不需要事先构造模型）：net_loaded = torch.load('./data/net_model.pth')
 3. 如果还要继续训练,则还需要加载 optimizer 的参数，当然如果只是使用训练好的模型的话就不需要了。
+
+
 
 ## 参考
 1. https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter03_DL-basics/3.3_linear-regression-pytorch
