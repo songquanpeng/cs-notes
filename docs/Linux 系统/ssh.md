@@ -7,8 +7,10 @@ ssh username@ip
 ssh username@domain -p port
 # 使用代理主机
 ssh -J proxy-server:22 target-server 
+# 将本地的 3333 端口转发到服务器的 2222 端口
+ssh username@domain -R 2222:localhost:3333 
 # 将服务器的 2222 端口转发到本地的 3333 端口 
-ssh -R 2222:localhost:333 username@domain 
+ssh username@domain -L 3333:localhost:2222
 ```
 
 ## 安装
