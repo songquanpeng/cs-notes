@@ -128,6 +128,20 @@ def foo():
 |:--|:--|
 |`torch.cat((a, b, c), dim=d)`|在维度 d 上把这三个张量拼接起来|
 
+重点详解：
+`x.scatter_(dim, index, src)`
+
+根据索引 index，在维度 dim 上把 x 的值更新为 src 上的对应值。
+例子：生成 One Hot 向量
+
+```python
+res = torch.zeros(x.shape[0], n_class, dtype=dtype, device=x.device)
+res.scatter_(1, x.view(-1, 1), 1)
+```
+
+1. [官方文档](https://pytorch.org/docs/master/tensors.html#torch.Tensor.scatter_)
+2. [一个教程](https://yuyangyy.medium.com/understand-torch-scatter-b0fd6275331c)
+
 ## 梯度的计算
 1. Tensor 的属性 `requires_grad` 若为 `True`，则 PyTorch 将追踪其上的操作。
 2. 通过 inpalce 函数 `x.requires_grad_(boolean)` 可设置该属性。
