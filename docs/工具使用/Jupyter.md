@@ -13,12 +13,17 @@ jupyter lab ./working/dir
 ```
 
 ## 基本使用
-运行 shell 命令：`!command`
+1. 运行 shell 命令：`!command`
+2. 运行 Python 文件：`!run foo.py`
+3. 加载 Python 文件到 Cell：`!load foo.py`
+4. 后加 `?` 可以获取帮助，加 `??` 可以获取更加详细的帮助。
 
 ## 魔法
-```
-%matplotlib inline
-```
+1. 启用行内 Matplotlib 支持：`%matplotlib inline`
+2. 报告运行时间：
+   1. 运行一次：`%time statement`
+   2. 运行多次：`%timeit statement`
+
 
 ## 快捷键
 1. `Shift + Enter`：执行当前单元，并选择下一个单元。

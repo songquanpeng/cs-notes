@@ -21,6 +21,10 @@ custom_channels:
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 ```
 
+取消自动激活 base 环境：
 ```sh
 conda config --set auto_activate_base false
 ```
+
+## 作用域
+访问全局变量前要先用 global 进行声明。
