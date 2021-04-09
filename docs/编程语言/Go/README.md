@@ -10,6 +10,7 @@
 + [ ] Go 语言实战
 + [ ] Go 并发编程实战
 + [ ] [Go 语言设计与实现](https://draveness.me/golang/)
++ [ ] [Go 语言高性能编程](https://geektutu.com/post/high-performance-go.html)
 
 ## Go 的特点
 1. 协程。 
