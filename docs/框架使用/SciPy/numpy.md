@@ -19,9 +19,7 @@
 
 ## NumPy 数组的创建
 1. 创建未初始化的数组：`np.empty(shape)` 或者 `np.empty_like(A)`
-2. 创建随机初始化的数组：
-   1. 均匀分布（范围 0~1）：`np.random.rand(m, n)`
-   2. 正态分布：`np.random.randn(m, n)`
+2. 创建随机初始化的数组（详见下面其主条目）：`np.random.rand(m, n)`
 3. 创建指定值的数组：
    1. 全 0：`np.zeros(shape)` 或者 
    2. 全 1：`np.ones(shape)` 或者 
@@ -31,6 +29,14 @@
       1. 定步长：`np.arange(start, end, step)`
       2. 定个数：`np.linspace(start, end, num)`
 4. 从数据创建：从 Python 序列类型：`np.array(seq)`
+
+## 随机数生成
+设置随机数种子：`np.random.seed(n)`
+
+1. 均匀分布（范围 0~1）：`np.random.rand(m, n)`
+2. 正态分布：
+   1. 标准正态分布：`np.random.randn(m, n)`
+   2. 更多参数控制：`np.random.normal(loc=mean, scale=std, size=(m, n))`
 
 ## NumPy 数组的属性
 1. 形状：`a.shape`
@@ -104,11 +110,44 @@ array([[ 4, 7, 5, 6],
 
 ```
 
-## NumPy 数组一元操作
-1. 交换 axis：`arr.swapaxes(1, 2)`
+## 线性代数相关操作
+1. 按元素相乘：`a * b`
+2. 矩阵乘法 / 点积：`np.dot(a, b)` 或 `a.dot(b)` 或 `a @ b`
 
-## NumPy 数组二元操作
-1. 点积：`np.dot(arr1, arr2)`
+## 统计相关方法
+以下函数都可以通过两种方式调用，以求均值为例：
+1. `np.mean(a)`
+2. `a.mean()`
+
+常用方法列表：
+1. 和：`a.sum()`
+2. 乘积：`a.prod()`
+3. 累积和（从第一个元素开始逐渐累加）：`a.cumsum()`
+4. 累积乘积：`a.cumprod()`
+5. 均值：`a.mean()`
+6. 标准差：`a.std()`
+7. 方差：`a.var()`
+8. 最小值：`a.min()`
+9. 最大值：`a.max()`
+10. 最小值的索引：`a.argmax()`
+11. 最大值的索引：`a.argmin()`
+
+
+## 针对布尔数组的操作
+1. 数组中是否有任何 true 项：`bools.any()`
+2. 数组中是否都是 true 项：`bools.all()`
+
+## 集合操作
+1. 取其中出现的值（剔除重复项）：`np.unique(a)`
+2. 交集：`np.intersect1d(x, y)`
+3. 并集：`np.union1d(x, y)`
+4. 计算 x 中哪些元素 y 中有（返回一个与 x 形状相同的布尔数组）：`np.in1d(x, y)`
+5. 计算 x 中哪些元素 y 中没有：`setdiff1d(x, y)`
+6. 计算异或：`setxor1d(x, y)`
+
+## NumPy 数组其他操作
+1. 交换 axis：`arr.swapaxes(1, 2)`
+2. true 时值取 x，false 时取 y：`np.where(condition, x, y)`
 
 ## NumPy 数组保存与加载
 
