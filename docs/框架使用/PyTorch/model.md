@@ -135,6 +135,12 @@ for name, layer in net.named_children():
 
 参数的类型为 `torch.nn.Parameter`，其是 Tensor 的子类，特殊之处在于其内的值会自动加入到参数列表。
 
+## 模型的非参数 Tensor
+用于保存非参数的 Tensor，这些 Tensor 又需要保存在 state_dict 之中。
+
+注册方法：`self.register_buffer('running_mean', torch.zeros(num_features))`
+
+使用方法：`self.running_mean`
 
 ### 对于单个网络层的参数初始化
 #### 直接初始化为指定值
