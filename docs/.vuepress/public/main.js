@@ -1,1 +1,0 @@
-document.location = "https://iamazing.cn/";

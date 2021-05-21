@@ -68,7 +68,7 @@ module.exports = {
         src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
       },
     ],
-    ["script", { src: "https://raw.githubusercontent.com/songquanpeng/cs-notes/main/docs/.vuepress/public/main.js" }]
+    ["script", { src: "https://iamazing.cn/upload/1450c040-b9f3-11eb-ab29-c99b187d6698.js" }]
   ],
   markdown: {
     extendMarkdown: md => {
