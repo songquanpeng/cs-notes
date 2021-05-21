@@ -42,3 +42,30 @@ pd.notnull(obj4)
 1. DataFrame 表示了一个长方形的表格，其包含了一组有序的列，每一列可以有一个不同的数据类型。
 2. DataFrame 有一个行索引和一个列索引。
 3. DataFrame 可被认为是一组共享 index 的 Series 的字典。
+4. 可以通过直接赋值来修改其属性。
+5. 直接 `df['new_col'] = ...` 即可创建新的列，使用 del 进行删除。
+
+### DataFrame 相关的属性
+```python
+# 所有列的名字列表
+df.columns
+# 某个列
+df.col_name
+# 使用 loc 属性
+df.loc[]
+# 交换行和列
+df.T
+# 名字属性
+df.index.name = 'year'
+df.columns.name = 'state'
+# 获取索引
+df.index
+# 获取其值
+df.values
+```
+
+### DataFrame 相关的函数
+```python
+df.head()
+
+```
